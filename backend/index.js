@@ -2,6 +2,7 @@ const express =  require('express');
 const app = express();
 const dotenv = require('dotenv').config()
 const port = process.env.PORT;        
+const url = process.env.MONGO_URL;        
 app.use(express.json())              //middleware to convert chunks data to json format; to avoid data+=chunk in node
 app.use(express.urlencoded({extended: true}));
 
