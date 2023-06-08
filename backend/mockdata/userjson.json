@@ -1,0 +1,33 @@
+[
+    {
+      "email": "john@example.com",
+      "mobile": "1234567890",
+      "fullname": "John Smith",
+      "password": "password123"
+    },
+    {
+      "email": "jane@example.com",
+      "mobile": "9876543210",
+      "fullname": "Jane Doe",
+      "password": "secret@123"
+    },
+    {
+      "email": "alex@example.com",
+      "mobile": "5555555555",
+      "fullname": "Alex Johnson",
+      "password": "pass123"
+    },
+    {
+      "email": "sarah@example.com",
+      "mobile": "9999999999",
+      "fullname": "Sarah Williams",
+      "password": "sarahpass"
+    },
+    {
+      "email": "michael@example.com",
+      "mobile": "7777777777",
+      "fullname": "Michael Brown",
+      "password": "mike@123"
+    }
+  ]
+  

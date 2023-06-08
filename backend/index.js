@@ -6,35 +6,31 @@ const port = process.env.PORT;
 const url = process.env.MONGO_URL;        
 app.use(express.json())              //middleware to convert chunks data to json format; to avoid data+=chunk in node
 app.use(express.urlencoded({extended: true}));
-
-
-app.get('/', (req, res)=>{
-    res.send(todoarr);
-})
-
-const arr = [];
-
-app.post('/', (req, res)=>{
-    // const {recieved} = req.body;
-    // console.log(recieved)
-    // todoarr.push(recieved);
-    // res.send(todoarr);
-    // res.json({todos: todoarr[0]});
-    // res.send('port is alive & working for post');
-
-    let data = '';
-  req.on('data', chunk => {
-    data += chunk.toString();
-  });
-  req.on('end', () => {
-    console.log(data);
-    todoarr.push(data)
-    res.send(todoarr);
-  });
-
-})
+const User = require('./models/userSchema');
 
 connectDB()
+
+// Handle GET request to fetch all users
+app.get('/users', async (req, res) => {
+  try {
+    const users = await User.find({});
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// Handle POST request to create a new user
+app.post('/users', async (req, res) => {
+  try {
+    const newUser = new User(req.body);
+    const savedUser = await newUser.save();
+    res.json(savedUser);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
 app.listen(port || 5002,()=>{
   console.log('server started on port', port)
 });
