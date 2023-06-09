@@ -14,7 +14,7 @@ connectDB()
 app.get('/users', async (req, res) => {
   try {
     const users = await User.find({});
-    res.json(users);
+    res.json(users || 'NO DATA FOUND');
   } catch (err) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
